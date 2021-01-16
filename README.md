@@ -37,5 +37,5 @@ crontab -e
 Add this line to run [every 10 minutes](https://crontab.guru/#*/10_*_*_*_*)
 
 ```
-$(which ruby) /home/<username>/your/path/speedtest_log.rb
+*/10 * * * * $(which ruby) /home/<username>/your/path/speedtest_log.rb
 ```
