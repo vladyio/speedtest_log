@@ -2,6 +2,8 @@
 
 Track regular Speedtest results (Download, Upload, Latency)
 
+![A chart of collected data](data.png)
+
 # Usage
 
 **Note:** You have to have:
