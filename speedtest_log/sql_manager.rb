@@ -5,9 +5,9 @@ class SQLManager
   def insert(**results)
     create_table_if_not_exists
 
-    results['timestamp'] = "#{Time.now}"
-    values = results.values.map { |v| %Q{'#{v}'} }.join(', ')
-    columns = results.keys.map { |c| %Q{'#{c}'} }.join(', ')
+    results['timestamp'] = "'#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}'"
+    values = results.values.map { |v| "#{v}" }.join(', ')
+    columns = results.keys.map { |c| "'#{c}'" }.join(', ')
 
     with_db do |db|
       db.execute(<<-SQL)
@@ -40,9 +40,9 @@ class SQLManager
         CREATE TABLE IF NOT EXISTS #{LOG_TABLE_NAME}(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           timestamp DATETIME,
-          download TEXT,
-          upload TEXT,
-          latency TEXT
+          download FLOAT,
+          upload FLOAT,
+          latency FLOAT
         )
       SQL
     end
