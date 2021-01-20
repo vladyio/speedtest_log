@@ -1,6 +1,6 @@
 class SQLManager
   DATABASE_FILENAME = 'speedtest_log.db'.freeze
-  LOG_TABLE_NAME = 'SpeedTestLog'.freeze
+  LOG_TABLE_NAME = 'speedtest_log'.freeze
 
   def insert(**results)
     create_table_if_not_exists
