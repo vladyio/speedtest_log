@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+html lang="en"
+  head
+    script[
+      crossorigin="anonymous"
+      integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA=="
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"
+    ]
+    meta charset="UTF-8"/
+    meta name="viewport" content="width=device-width, initial-scale=1.0"/
+    title SpeedTest Log
+  body
+    canvas[
+      id="chart"
+      width="1400px"
+      height="800px"
+      style="margin: 0 auto"
+    ]
+
+    javascript:
+      const ctx = document.getElementById('chart');
+      const myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: #{{@chart_data[:labels].to_json}},
+              datasets: [
+                {
+                  label: 'Download',
+                  data: #{@chart_data[:download]},
+                  borderColor: 'rgba(50, 132, 200, 1)',
+                  backgroundColor: 'transparent'
+                },
+                {
+                  label: 'Upload',
+                  data: #{@chart_data[:upload]},
+                  borderColor: 'rgba(150, 132, 200, 1)',
+                  backgroundColor: 'transparent'
+                }
+              ]
+          },
+          options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 90,
+                        minRotation: 90
+                    }
+                }]
+            },
+            responsive: false
+          }
+      });
