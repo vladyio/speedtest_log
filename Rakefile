@@ -9,7 +9,7 @@ namespace :db do
   end
 
   task :create_with_schema do
-    Rake::Task["db:create"].invoke
-    Rake::Task["db:schema:load"].invoke
+    Rake::Task['db:create'].invoke
+    Rake::Task['db:schema:load'].invoke
   end
 end

@@ -1,8 +1,13 @@
 # Speedtest Log
 
-Track regular Speedtest results (Download, Upload, Latency)
+Track regular Speedtest results (Download, Upload, Latency) and view on a line graph.
 
 ![A chart of collected data](data.png)
+
+# Installation
+
+## Setup a database
+
 
 # Usage
 

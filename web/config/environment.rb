@@ -10,7 +10,7 @@ require 'sqlite3'
 require 'pry'
 
 set :root, File.join(File.dirname(__FILE__), '..')
-set :database, { adapter: 'sqlite3', database: '../speedtest_log.db' }
+set :database, { adapter: 'sqlite3', database: 'speedtest_log.db' }
 register Sinatra::ActiveRecordExtension
 
 require_rel '../app'
