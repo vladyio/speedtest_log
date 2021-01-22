@@ -6,16 +6,28 @@ html lang="en"
       integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA=="
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"
     ]
+    script src="https://cdn.jsdelivr.net/npm/flatpickr"
+    link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" /
+    style
+      |  body { padding: 0; margin: 0; } main { width: 100vw; height: 95vh }
     meta charset="UTF-8"/
     meta name="viewport" content="width=device-width, initial-scale=1.0"/
     title SpeedTest Log
   body
-    canvas[
-      id="chart"
-      width="1400px"
-      height="800px"
-      style="margin: 0 auto"
-    ]
+    main
+      form class="date-filters" style="display: flex"
+        div class="date-filters-control" style="margin-right: 15px"
+          label for="date-from" From: &nbsp;
+          input name="date[from]" id="date-from"
+        div class="date-filters-control"
+          label for="date-to" To: &nbsp;
+          input name="date[to]" id="date-to"
+        div
+          input type="submit"
+      canvas[
+        id="chart"
+        style="margin: 0 auto"
+      ]
 
     javascript:
       const ctx = document.getElementById('chart');
@@ -54,6 +66,14 @@ html lang="en"
                     }
                 }]
             },
-            responsive: false
+            responsive: true
           }
+      });
+
+      flatpickr("#date-from, #date-to", {
+        enableTime: true,
+        time_24hr: true,
+        altInput: true,
+        altFormat: "d M Y H:i",
+        dateFormat: "Y-m-d H:i",
       });

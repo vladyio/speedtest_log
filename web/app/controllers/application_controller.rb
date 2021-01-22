@@ -10,7 +10,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    @speedtest_logs = SpeedtestLog.all
+    @from = params[:date][:from]
+    @to = params[:date][:to]
+    @speedtest_logs = SpeedtestLog.where('timestamp >= ? AND timestamp < ?', @from, @to)
     @chart_data = SpeedtestChartDataService.new(@speedtest_logs).call
     slim :index
   end
