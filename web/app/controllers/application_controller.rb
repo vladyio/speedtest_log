@@ -1,10 +1,4 @@
 class ApplicationController < Sinatra::Base
-  helpers do
-    def safe_json(json_string)
-      Rack::Utils.escape_html(json_string)
-    end
-  end
-
   configure do
     set :views, -> { File.join(root, '..', 'views') }
   end
