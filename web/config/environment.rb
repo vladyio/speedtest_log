@@ -8,6 +8,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sqlite3'
 require 'pry'
+require 'time'
+require 'date'
 
 set :root, File.join(File.dirname(__FILE__), '..')
 set :database, { adapter: 'sqlite3', database: 'speedtest_log.db' }
