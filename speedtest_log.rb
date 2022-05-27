@@ -7,7 +7,9 @@ require_relative 'speedtest_log/parsed_output'
 require_relative 'speedtest_log/result_logger'
 
 if ARGV[0] == 'show'
-  ResultLogger.new.show
+  desired_rows_count = ARGV[1].to_i
+
+  ResultLogger.new.show(last: desired_rows_count)
 
   return
 end
